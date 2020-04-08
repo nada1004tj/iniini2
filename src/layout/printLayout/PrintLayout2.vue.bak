@@ -1,0 +1,63 @@
+<template>
+  <div>
+    <p>1학년 더하기
+    <Print></Print>
+    </p>
+    <Axios v-on:axiosData="parents"></Axios>
+    <div size="A4" id="printLayer">
+      <PrintHeader></PrintHeader>
+      <ContentsSingleAdd :jsonCalculData="{calculatorResult}"></ContentsSingleAdd>
+    </div>
+  </div>
+</template>
+
+<script>
+//import SingleDigitData from '@/components/calculatorData/plus/SingleDigitData'
+import Axios from '@/components/Axios'
+import PrintHeader from '@/layout/printLayout/PrintHeader'
+import ContentsSingleAdd from '@/views/DataContents/contentsSingleAdd'
+import Print from '@/components/Print'
+
+var data = {'resultCd':'000'}
+
+export default {
+  data() {
+    return {
+      calculatorResult: data
+    }
+  },
+  components: {
+    Axios,
+    PrintHeader,
+    ContentsSingleAdd,
+    Print
+  },
+  methods: {
+    parents(message){
+      this.calculatorResult = message
+    }
+  }
+}
+</script>
+
+<style scoped>
+/* 로컬 스타일 */
+div {
+background: white;
+display: block;
+margin: 0 auto;
+margin-bottom: 0.5cm;
+box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+div[size="A4"] {
+width: 21cm;
+height: 29.7cm;
+}
+
+@media print {
+body, div {
+  margin: 0;
+  box-shadow: 0;
+}
+}
+</style>

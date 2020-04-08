@@ -1,0 +1,19 @@
+<template>
+  <div>
+    <button @click="fetchData">문제생성</button>
+  </div>
+</template>
+<script>
+
+export default {
+  methods: {
+    fetchData: function() {
+        this.$axios.get('/api/additionSingle')
+            .then((response) => {
+                console.log(response.data);
+                this.$emit("axiosData",response.data)
+            })
+    }
+  }
+}
+</script>

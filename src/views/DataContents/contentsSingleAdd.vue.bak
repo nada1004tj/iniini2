@@ -1,0 +1,29 @@
+<template>
+  <div>111==
+    {{ ChildJsonCalculData }}
+  </div>
+</template>
+
+<script>
+var data = { a: 1 }
+
+export default {
+  data() {
+    return {
+      ChildJsonCalculData: data
+    }
+  },
+  props: {
+    jsonCalculData: {
+      type: Object,
+      required: true,
+      default: data
+    }
+  },
+  computed: {
+    calculated: function () {
+    	return ChildJsonCalculData = jsonCalculData
+    }
+  }
+}
+</script>
